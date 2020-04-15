@@ -38,7 +38,7 @@ class Localidades extends REST_Controller
             
             $localidad = $this->localidades_model->find($id);
             
-            
+            $this->response(array("localidad" => $localidad), 200);
         }
         
     }
