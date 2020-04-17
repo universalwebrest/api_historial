@@ -1,7 +1,7 @@
 <?php
 namespace application\entities;
 
-class Paciente
+class Paciente_entity
 {
     private $id;
     private $dni;

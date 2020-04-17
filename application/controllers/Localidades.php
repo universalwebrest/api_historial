@@ -12,7 +12,7 @@ class Localidades extends REST_Controller
     {
         parent::__construct();
         
-        $this->load->model('localidades_model');
+        $this->load->model('localidades_model');        
     }
     
     
