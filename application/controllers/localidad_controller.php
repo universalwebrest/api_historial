@@ -5,20 +5,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
-class Localidades extends REST_Controller
+class localidad_controller extends REST_Controller
 {
     
     public function __construct()
     {
         parent::__construct();
         
-        $this->load->model('localidades_model');        
+        $this->load->model('localidad_model');        
     }
     
     
     public function index_get()
     {
-        $query = $this->localidades_model->get();
+        $query = $this->localidad_model->get();
         
         if (is_null($query))
         {
@@ -40,7 +40,7 @@ class Localidades extends REST_Controller
         }
         else{
             
-            $localidad = $this->localidades_model->get($id);
+            $localidad = $this->localidad_model->get($id);
             
             if (is_null($localidad))
             {
@@ -58,7 +58,7 @@ class Localidades extends REST_Controller
     {
         if ($this->post('localidad'))
         {            
-            $id = $this->localidades_model->save($this->post('localidad'));
+            $id = $this->localidad_model->save($this->post('localidad'));
             
             if ($id)
             {
@@ -82,7 +82,7 @@ class Localidades extends REST_Controller
             $this->response(array("error" => "No se tiene valores en DATA o ID"), 400);
         }
         
-        $update = $this->localidades_model->update($id, $this->post('data'));
+        $update = $this->localidad_model->update($id, $this->post('data'));
         
         if ($update)
         {
@@ -101,7 +101,7 @@ class Localidades extends REST_Controller
             $this->response(array("error" => "Id es null"), 400);
         }
         
-        $delete = $this->localidades_model->delete($id);
+        $delete = $this->localidad_model->delete($id);
         
         if ($delete)
         {

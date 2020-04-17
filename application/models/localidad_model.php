@@ -1,12 +1,12 @@
 <?php
 
-class Localidades_model extends CI_Model
+class localidad_model extends CI_Model
 {
     public function __construct()
     {
         parent::__construct();
                 
-        $this->load->library('localidad_entity');
+        $this->load->library('localidad');
     }
     
     public function get($id = null)
@@ -18,7 +18,7 @@ class Localidades_model extends CI_Model
             
             if ($localidades->num_rows() > 0)
             {
-                return $localidades->custom_result_object('localidad_entity');
+                return $localidades->custom_result_object('localidad');
             }
             else
             {

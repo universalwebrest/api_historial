@@ -5,17 +5,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
-class Departamentos extends REST_Controller
+class departamento_controller extends REST_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('departamentos_model');        
+        $this->load->model('departamento_model');        
     }
     
     public function index_get()
     {
-        $departamentos = $this->departamentos_model->get();
+        $departamentos = $this->departamento_model->get();
         
         if (!is_null($departamentos))
         {
@@ -33,7 +33,7 @@ class Departamentos extends REST_Controller
             $this->response(array("error" => "Debe proporcionar valor ID del departamento"), 400);
         }
         
-        $departamento = $this->departamentos_model->get($id);
+        $departamento = $this->departamento_model->get($id);
         
         if (!is_null($departamento))
         {
@@ -52,7 +52,7 @@ class Departamentos extends REST_Controller
             $this->response(array('error' => 'No hay departamento para registrar'), 400);
         }
         
-        $id = $this->departamentos_model->save($this->post('departamento'));
+        $id = $this->departamento_model->save($this->post('departamento'));
         
         if (!is_null($id))
         {
@@ -71,7 +71,7 @@ class Departamentos extends REST_Controller
             $this->response(null, 400);
         }
         
-        $update = $this->departamentos_model->update($id, $this->post('data'));
+        $update = $this->departamento_model->update($id, $this->post('data'));
         
         if ($update)
         {
@@ -90,7 +90,7 @@ class Departamentos extends REST_Controller
             $this->response(array("error" => "El ID fue null"), 400);
         }
         
-        $delete = $this->departamentos_model->delete($id);
+        $delete = $this->departamento_model->delete($id);
         
         if ($delete)
         {

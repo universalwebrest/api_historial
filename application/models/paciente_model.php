@@ -1,6 +1,6 @@
 <?php
 
-class Pacientes_model extends CI_Model
+class paciente_model extends CI_Model
 {
     public function __construct()
     {

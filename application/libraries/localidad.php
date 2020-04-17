@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Localidad_entity
+class localidad
 {
     private $id;
     

@@ -1,6 +1,6 @@
 <?php
 
-class Historiales_model extends CI_Model
+class historial_model extends CI_Model
 {
     public function __construct()
     {

@@ -5,18 +5,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
-class Pacientes extends REST_Controller 
+class paciente_controller extends REST_Controller 
 {
     
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('pacientes_model');
+        $this->load->model('paciente_model');
     }
     
     public function index_get()
     {
-        $pacientes = $this->pacientes_model->get();
+        $pacientes = $this->paciente_model->get();
         
         if (!is_null($pacientes))
         {
@@ -34,7 +34,7 @@ class Pacientes extends REST_Controller
             $this->response(array("error" => "Debe proporcionar valor ID de paciente como parametro"), 400);
         }
         
-        $paciente = $this->pacientes_model->get($id);
+        $paciente = $this->paciente_model->get($id);
                 
         if (!is_null($paciente))
         {
@@ -53,7 +53,7 @@ class Pacientes extends REST_Controller
             $this->response(array('error' => 'No hay paciente para registrar'), 400);
         }
         
-        $id = $this->pacientes_model->save($this->post('paciente'));
+        $id = $this->paciente_model->save($this->post('paciente'));
         
         if (!is_null($id))
         {
@@ -72,7 +72,7 @@ class Pacientes extends REST_Controller
             $this->response(null, 400);
         }
         
-        $update = $this->pacientes_model->update($id, $this->post('data'));
+        $update = $this->paciente_model->update($id, $this->post('data'));
         
         if ($update)
         {
@@ -91,7 +91,7 @@ class Pacientes extends REST_Controller
             $this->response(null, 400);            
         }
         
-        $delete = $this->pacientes_model->delete($id);
+        $delete = $this->paciente_model->delete($id);
         
         if ($delete)
         {
