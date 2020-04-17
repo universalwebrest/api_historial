@@ -1,5 +1,6 @@
 <?php
-namespace application\entities;
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Paciente_entity
 {
