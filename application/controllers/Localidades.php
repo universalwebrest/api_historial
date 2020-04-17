@@ -18,16 +18,17 @@ class Localidades extends REST_Controller
     
     public function index_get()
     {
-        $localidades = $this->localidades_model->get();
-                
-        if (is_null($localidades))
+        $query = $this->localidades_model->get();
+        
+        if (is_null($query))
         {
             $this->response(array("error" => "No hay localidades registradas"), 400);
         }
         else
         {
-            $this->response(array("localidades" => $localidades), 200);
+            $this->response(array("localidades" => $query), 200);
         }
+        
     }
     
     
