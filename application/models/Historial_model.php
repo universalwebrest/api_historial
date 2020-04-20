@@ -1,30 +1,32 @@
 <?php
 
-class historial_model extends CI_Model
+class Historial_model extends CI_Model
 {
     public function __construct()
     {
         parent::__construct();
+        
+        $this->load->library('Historial');
     }
     
-    public function get($id=null)
-    {
-        if (is_null($id))
-        {
-            return null;
-        }        
-        $array = array('ID' => $id);
+    public function get($id)
+    {        
+        $this->db->from('HISTORIAL');
         
-        $query = $this->db->get_where('HISTORIAL', $array);
+        $this->db->select('ID, HOSPITAL_ID');
+        
+        $this->db->where('ID', $id);
+        
+        $query = $this->db->get();
         
         if ($query->num_rows() == 1)
-        {
-            return $query->row();
+        {   
+            return $query->result('Historial');
         }
         else
         {
             return null;
-        }
+        }        
     }
     
     public function save($historial)

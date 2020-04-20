@@ -1,6 +1,6 @@
 <?php
 
-class localidad_model extends CI_Model
+class Localidad_model extends CI_Model
 {
     public function __construct()
     {

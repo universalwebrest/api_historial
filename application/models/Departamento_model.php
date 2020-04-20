@@ -1,6 +1,6 @@
 <?php
 
-class departamento_model extends CI_Model
+class Departamento_model extends CI_Model
 {
     public function __construct()
     {

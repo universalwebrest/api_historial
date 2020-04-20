@@ -2,42 +2,63 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class paciente
+class Paciente
 {
     private $id;
+    
     private $dni;
+    
     private $nombre;
+    
     private $fechaNacimiento;
+    
     private $genero;
+    
     private $estadoCivil;
+    
     private $obraSocial;
+    
     private $estudios;
+    
     private $domicilio;
+    
     private $telefono;
+    
     private $localidad;
+    
     private $departamento;
     
-    public function __construct()
-    {
-        $this->id = null;
-        $this->dni = 0;
-        $this->nombre = "";
-        $this->fechaNacimiento = new \DateTime();
-        $this->genero = 1;
-        $this->estadoCivil = 1;
-        $this->obraSocial = 1;
-        $this->estudios = 1;
-        $this->domicilio = "";
-        $this->telefono = "";
-        $this->localidad = 1;
-        $this->departamento = 1;
-    }
+//     public function __construct()
+//     {
+//         $this->dni = 0;
+//         $this->nombre = "";
+//         $this->fechaNacimiento = new \DateTime();
+//         $this->genero = 1;
+//         $this->estadoCivil = 1;
+//         $this->obraSocial = 1;
+//         $this->estudios = 1;
+//         $this->domicilio = "";
+//         $this->telefono = "";
+//         $this->localidad = 1;
+//         $this->departamento = 1;
+//     }
     
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
-    
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
     public function setDni($value)
     {
         if (is_integer($value))

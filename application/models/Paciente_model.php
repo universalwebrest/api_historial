@@ -1,10 +1,12 @@
 <?php
 
-class paciente_model extends CI_Model
+class Paciente_model extends CI_Model
 {
     public function __construct()
     {
         parent::__construct();
+        
+        $this->load->library('Paciente');
     }
     
     public function get($id = null)
@@ -30,8 +32,10 @@ class paciente_model extends CI_Model
             $query = $this->db->get();
             
             if ($query->num_rows() > 0)
-            {
-                return $query->result();
+            {                
+                $pacientes = $query->custom_result_object('Paciente');
+                
+                return $pacientes;
             }
             return null;
         }
@@ -43,7 +47,7 @@ class paciente_model extends CI_Model
             
             if ($query->num_rows() == 1)
             {
-                $row = $query->row();
+                $row = $query->custom_result_object('Paciente');
                 
                 return $row;
             }

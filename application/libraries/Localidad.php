@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class localidad
+class Localidad
 {
     private $id;
     
@@ -12,17 +12,6 @@ class localidad
     
     private $departamento_id;
         
-    public function __construct()
-    {
-        $this->id = null;
-        
-        $this->descripcion = "";
-        
-        $this->codigo_postal = 0;
-        
-        $this->departamento_id = 0;
-    }
-    
     /** 
      * @return number  
      */

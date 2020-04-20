@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
-class paciente_controller extends REST_Controller 
+class Paciente_controller extends REST_Controller 
 {
     
     public function __construct()

@@ -5,12 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
-class historial_controller extends REST_Controller
+class Historial_controller extends REST_Controller
 {
     
     public function __construct(){
+        
         parent::__construct();
-        $this->load->model('historial_model');
+        
+        $this->load->model('Historial_model', 'Paciente_model');        
     }
     
     public function index_get($id = null)
@@ -19,12 +21,12 @@ class historial_controller extends REST_Controller
         {
             $this->response("No se proporciono el parametro 'id' de la consulta", 400);
         }
-        
-        $historial = $this->historial_model->get($id);
-        
+                
+        $historial = $this->Historial_model->get($id);
+                
         if (!is_null($historial))
         {
-            $this->response(array('historial' => $historial), 200);
+            $this->response($historial, 200);
         }
         else
         {
@@ -40,7 +42,7 @@ class historial_controller extends REST_Controller
         }
         else 
         {
-            $saved = $this->historial_model->save($this->post('historial'));
+            $saved = $this->Historial_model->save($this->post('historial'));
             
             if ($saved)
             {
