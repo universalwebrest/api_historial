@@ -6,50 +6,27 @@ class Paciente_model extends CI_Model
     {
         parent::__construct();
         
-        $this->load->library('Paciente');
     }
     
     public function get($id = null)
-    {   
-        $this->db->select('ID
-                          ,DNI
-                          ,NOMBRE
-                          ,FECHA_NACIMIENTO
-                          ,DOMICILIO
-                          ,TELEFONO
-                          ,GENERO_ID
-                          ,ESTADO_CIVIL_ID
-                          ,OBRA_SOCIAL_ID
-                          ,ESTUDIO_ID
-                          ,LOCALIDAD_ID
-                          ,DEPARTAMENTO_ID                          
-                          ');
-        
-        $this->db->from('PACIENTE');
-        
+    {           
         if (is_null($id))
         {
-            $query = $this->db->get();
+            $pacientes = $this->db->get('paciente');
             
-            if ($query->num_rows() > 0)
-            {                
-                $pacientes = $query->custom_result_object('Paciente');
-                
-                return $pacientes;
+            if ($pacientes->num_rows() > 0)
+            {
+                return $pacientes->result();
             }
             return null;
         }
         else
-        {
-            $this->db->where('ID', $id);
+        {            
+            $paciente = $this->db->get_where('paciente', array('id'=>$id));
             
-            $query = $this->db->get();
-            
-            if ($query->num_rows() == 1)
-            {
-                $row = $query->custom_result_object('Paciente');
-                
-                return $row;
+            if ($paciente->num_rows() == 1)
+            {   
+                return $paciente->row();
             }
             
             return null;
@@ -61,7 +38,7 @@ class Paciente_model extends CI_Model
     {
         $this->db->set($this->_setPaciente($paciente));
         
-        $this->db->insert('PACIENTE');
+        $this->db->insert('paciente');
         
         if ($this->db->affected_rows() == 1)
         {
@@ -87,9 +64,9 @@ class Paciente_model extends CI_Model
     
     public function delete($id)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         
-        $this->db->delete('PACIENTE');
+        $this->db->delete('paciente');
         
         if ($this->db->affected_rows() == 1)
         {

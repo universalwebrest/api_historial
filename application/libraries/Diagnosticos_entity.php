@@ -1,10 +1,11 @@
 <?php
 
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @author diego
  *
  */
-class Diagnosticos
+class Diagnosticos_entity
 {    
     private $id;
     
@@ -31,28 +32,28 @@ class Diagnosticos
     const ID_DIABETES_GESTACIONAL = 1;
     
 
-//     public function __construct()
-//     {        
-//         $this->glucemia_alterada_en_ayunas = false;
+    public function __construct()
+    {        
+        $this->glucemia_alterada_en_ayunas = false;
         
-//         $this->tolerancia_glucosa_alterada = false;
+        $this->tolerancia_glucosa_alterada = false;
         
-//         $this->diabetes = false;
+        $this->diabetes = false;
         
-//         $this->diabetes_tiempo_evolucion = 0;
+        $this->diabetes_tiempo_evolucion = 0;
         
-//         $this->diabetes_tipo = 0;
+        $this->diabetes_tipo = 0;
         
-//         $this->diabetes_semanas_gestacion = 0;
+        $this->diabetes_semanas_gestacion = 0;
         
-//         $this->hipertension_alterial = false;
+        $this->hipertension_alterial = false;
         
-//         $this->hipertension_arterial_tiempo_evolucion = 0;
+        $this->hipertension_arterial_tiempo_evolucion = 0;
         
-//         $this->dislipemia = false;
+        $this->dislipemia = false;
         
-//         $this->preclasificacion_rcvg = 0;
-//     }
+        $this->preclasificacion_rcvg = 0;
+    }
     
     
     /**

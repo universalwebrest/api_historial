@@ -14,7 +14,7 @@ class Localidad_model extends CI_Model
         // Opcion para cargar todos los registros de LOCALIDAD
         if (is_null($id))
         {
-            $localidades = $this->db->get('LOCALIDAD');
+            $localidades = $this->db->get('localidad');
             
             if ($localidades->num_rows() > 0)
             {
@@ -27,11 +27,11 @@ class Localidad_model extends CI_Model
         }
         else //Opcion para cargar solo un regitro por medio del ID pasado desde el controller
         {
-            $this->db->from('LOCALIDAD');
+            $this->db->from('localidad');
             
-            $this->db->select('ID, DESCRIPCION, CODIGO_POSTAL, DEPARTAMENTO_ID');
+            //$this->db->select('ID, DESCRIPCION, CODIGO_POSTAL, DEPARTAMENTO_ID');
             
-            $this->db->where('ID', $id);
+            $this->db->where('id', $id);
             
             $localidad = $this->db->get();
             
@@ -43,7 +43,7 @@ class Localidad_model extends CI_Model
     {
         $data = $this->_setLocalidad($localidad);
         
-        $this->db->insert("LOCALIDAD", $data);
+        $this->db->insert('localidad', $data);
         
         if ($this->db->affected_rows() == 1)
         {
@@ -57,9 +57,9 @@ class Localidad_model extends CI_Model
     
     public function update($id, $data)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         
-        $this->db->update('LOCALIDAD', $data);
+        $this->db->update('localidad', $data);
         
         if ($this->db->affected_rows() == 1)
         {
@@ -73,9 +73,9 @@ class Localidad_model extends CI_Model
     
     public function delete($id)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         
-        $this->db->delete('LOCALIDAD');
+        $this->db->delete('localidad');
         
         if ($this->db->affected_rows() == 1) return TRUE;
         else return FALSE;

@@ -4,24 +4,16 @@ class Historial_model extends CI_Model
 {
     public function __construct()
     {
-        parent::__construct();
-        
-        $this->load->library('Historial');
+        parent::__construct();        
     }
     
     public function get($id)
-    {        
-        $this->db->from('HISTORIAL');
+    {                
+        $historial = $this->db->get_where('historial', array('id' => $id));
         
-        $this->db->select('ID, HOSPITAL_ID');
-        
-        $this->db->where('ID', $id);
-        
-        $query = $this->db->get();
-        
-        if ($query->num_rows() == 1)
+        if ($historial->num_rows() == 1)
         {   
-            return $query->result('Historial');
+            return $historial->row();
         }
         else
         {
@@ -29,11 +21,11 @@ class Historial_model extends CI_Model
         }        
     }
     
-    public function save($historial)
+    public function save($id, $hospital_id)
     {
-        $this->db->set($this->_setHistorial($historial));
+        $this->db->set(array('id'=>$id, 'hospital_id'=>$hospital_id));
         
-        $this->db->insert('HISTORIAL');
+        $this->db->insert('historial');
         
         if ($this->db->affected_rows() == 1)
         {
@@ -43,12 +35,7 @@ class Historial_model extends CI_Model
         return FALSE;     
     }
     
-    public function _setHistorial($historial)
-    {
-        return array(
-            'ID' => $historial['id'],
-            'HOSPITAL_ID' => $historial['hospital_id']
-        );
-    }
+    public function update($historial)
+    
 }
 

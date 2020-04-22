@@ -12,7 +12,15 @@ class Historial_controller extends REST_Controller
         
         parent::__construct();
         
-        $this->load->model('Historial_model', 'Paciente_model');        
+        $this->load->library(array(            
+            'historial_entity',
+            'paciente_entity'
+        ));
+        
+        $this->load->model(array(
+            'historial_model',            
+            'paciente_model'            
+        ));        
     }
     
     public function index_get($id = null)
@@ -22,11 +30,17 @@ class Historial_controller extends REST_Controller
             $this->response("No se proporciono el parametro 'id' de la consulta", 400);
         }
                 
-        $historial = $this->Historial_model->get($id);
+        $query = $this->historial_model->get($id);
+        
+        $historial = array(
+            'id'=>$query->id,
+            'hospital_id'=>$query->hospital_id,
+            'paciente'=>$this->paciente_model->get($id)
+        );
                 
         if (!is_null($historial))
         {
-            $this->response($historial, 200);
+            $this->response(array('historial' => $historial), 200);
         }
         else
         {
@@ -36,17 +50,26 @@ class Historial_controller extends REST_Controller
     
     public function index_post()
     {
-        if (!$this->post('historial'))
+        if (!$this->post('data'))
         {
             $this->response(array('error' => "No se recibió el objeto historial"), 400);
         }
         else 
         {
-            $saved = $this->Historial_model->save($this->post('historial'));
+            $data = $this->post('data');
             
-            if ($saved)
+            $id = $this->paciente_model->save($data['paciente']);
+            
+            if (!is_null($id))
             {
-                $this->response(array('response'  => "El historial fue registrado satisfactoriamente"), 200);
+                if ($this->historial_model->save($id, $data['hospital']))
+                {
+                    $this->response(array('id'  => $id), 200);
+                }
+                else
+                {
+                    $this->response(array('error' => 'No se pudo almacenar el historial'), 400);
+                }
             }
             else
             {

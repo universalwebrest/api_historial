@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Historial
+class Historial_entity
 {
     private $id;
     
@@ -48,9 +48,8 @@ class Historial
     {
         $this->hospital_id = $hospital_id;
     }
-
     /**
-     * @return paciente
+     * @return mixed
      */
     public function getPaciente()
     {
@@ -58,15 +57,15 @@ class Historial
     }
 
     /**
-     * @param paciente $paciente
+     * @param mixed $paciente
      */
-    public function setPaciente(Paciente $paciente)
+    public function setPaciente($paciente)
     {
         $this->paciente = $paciente;
     }
 
     /**
-     * @return diagnosticos
+     * @return mixed
      */
     public function getDiagnosticos()
     {
@@ -74,11 +73,14 @@ class Historial
     }
 
     /**
-     * @param diagnosticos $diagnosticos
+     * @param mixed $diagnosticos
      */
-    public function setDiagnosticos(Diagnosticos $diagnosticos)
+    public function setDiagnosticos($diagnosticos)
     {
         $this->diagnosticos = $diagnosticos;
     }
+
+    
+    
        
 }

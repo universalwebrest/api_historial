@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Paciente
+class Paciente_entity
 {
     private $id;
     
@@ -28,20 +28,20 @@ class Paciente
     
     private $departamento;
     
-//     public function __construct()
-//     {
-//         $this->dni = 0;
-//         $this->nombre = "";
-//         $this->fechaNacimiento = new \DateTime();
-//         $this->genero = 1;
-//         $this->estadoCivil = 1;
-//         $this->obraSocial = 1;
-//         $this->estudios = 1;
-//         $this->domicilio = "";
-//         $this->telefono = "";
-//         $this->localidad = 1;
-//         $this->departamento = 1;
-//     }
+    public function __construct()
+    {
+        $this->dni = 0;
+        $this->nombre = "";
+        $this->fechaNacimiento = new \DateTime();
+        $this->genero = 1;
+        $this->estadoCivil = 1;
+        $this->obraSocial = 1;
+        $this->estudios = 1;
+        $this->domicilio = "";
+        $this->telefono = "";
+        $this->localidad = 1;
+        $this->departamento = 1;
+    }
     
     /**
      * @return mixed

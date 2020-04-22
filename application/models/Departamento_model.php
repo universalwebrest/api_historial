@@ -9,11 +9,11 @@ class Departamento_model extends CI_Model
     
     public function get($id = null)
     {        
-        $this->db->select('ID, DESCRIPCION');
+        $this->db->select('id, descripcion');
         
         if (is_null($id))
         {
-            $query = $this->db->get('DEPARTAMENTO');
+            $query = $this->db->get('departamento');
             
             if ($query->num_rows() > 0)
             {
@@ -24,9 +24,9 @@ class Departamento_model extends CI_Model
         }
         else 
         {
-            $this->db->where('ID', $id);
+            $this->db->where('id', $id);
             
-            $query = $this->db->get('DEPARTAMENTO');
+            $query = $this->db->get('departamento');
             
             if ($query->num_rows() == 1)
             {
@@ -41,12 +41,12 @@ class Departamento_model extends CI_Model
     
     public function save($departamento)
     {
-        $array = array('ID'=>$departamento['id'],
-                                      'DESCRIPCION'=>$departamento['descripcion']);
+        $array = array('id'=>$departamento['id'],
+                       'descripcion'=>$departamento['descripcion']);
         
         $this->db->set($array);
         
-        $this->db->insert('DEPARTAMENTO');
+        $this->db->insert('departamento');
         
         if ($this->db->affected_rows() == 1)
         {
@@ -58,9 +58,9 @@ class Departamento_model extends CI_Model
     
     public function update($id, $data)
     {
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         
-        $this->db->update('DEPARTAMENTO', $data['key_value']);
+        $this->db->update('departamento', $data['key_value']);
         
         if ($this->db->affected_rows() == 1)
         {
@@ -72,9 +72,9 @@ class Departamento_model extends CI_Model
     
     public function delete($id)
     {       
-        $this->db->where('ID', $id);
+        $this->db->where('id', $id);
         
-        $this->db->delete('DEPARTAMENTO');
+        $this->db->delete('departamento');
         
         if ($this->db->affected_rows() == 1)
         {
