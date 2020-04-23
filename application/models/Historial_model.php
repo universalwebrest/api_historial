@@ -34,8 +34,6 @@ class Historial_model extends CI_Model
         
         return FALSE;     
     }
-    
-    public function update($historial)
-    
+        
 }
 
