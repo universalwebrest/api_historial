@@ -25,15 +25,15 @@ class Diagnosticos_model extends CI_Model
         
         $this->db->set('id', $id);
         
-        if ($this->db->insert('diagnosticos'))
+        $this->db->insert('diagnosticos');
+        
+        if ($this->db->affected_rows() == 1) 
         {
             return TRUE;
+        }        
+        else {
+            return FALSE;        
         }
-        else
-        {
-            return FALSE;
-        }
-        
     }
     
     public function update($id, $control, $valor) {
