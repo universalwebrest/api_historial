@@ -5,20 +5,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 require_once APPPATH . '/libraries/Format.php';
 
+/**
+ * @author diego
+ *
+ */
 class Historial_controller extends REST_Controller
-{
-    
+{    
+    /**
+     * Constructor vacio de controlador de historiales 
+     */
     public function __construct(){
         
         parent::__construct();
-                
-        $this->load->model(array(
-            'historial_model','paciente_model','diagnosticos_model','enfermedades_asociadas_model'
-        ));        
+        
+        $this->load->model($this->_get_array_models());        
     }
-    
+        
+    /**
+     * @param int $id
+     */
     public function index_get($id = null)
     {
+        
         if (is_null($id))
         {
             $this->response("No se proporciono el parametro 'id' de la consulta", 400);
@@ -31,7 +39,8 @@ class Historial_controller extends REST_Controller
             'hospital_id'   =>$query->hospital_id,
             'paciente'      =>$this->paciente_model->get($id),
             'diagnosticos'  =>$this->diagnosticos_model->get($id),
-            'enfermedades_asociadas' =>$this->enfermedades_asociadas_model->get($id)
+            'enfermedades_asociadas' =>$this->enfermedades_asociadas_model->get($id),
+            'factores_de_riesgo_asociados' =>$this->factores_de_riesgo_asociados_model->get($id)
         );
                 
         if (!is_null($historial))
@@ -62,6 +71,7 @@ class Historial_controller extends REST_Controller
                 $ok['historial'] = $this->historial_model->save($id, $data['hospital']);
                 $ok['diagnostico'] = $this->diagnosticos_model->save($id);
                 $ok['enfermedades_asociadas'] = $this->enfermedades_asociadas_model->save($id);
+                $ok['factores_de_riesgo_asociados'] = $this->factores_de_riesgo_asociados_model->save($id);
                 
                 if (!in_array(FALSE, $ok))
                 {
@@ -69,7 +79,16 @@ class Historial_controller extends REST_Controller
                 }
                 else
                 {
-                    $this->response(array('error' => 'No se pudo almacenar el historial'), 400);
+                    while ($value = current($ok))
+                    {
+                        if ($value == FALSE)
+                        {
+                            $tablas[] = key($ok);
+                        }                        
+                        next($ok);
+                    }
+                    
+                    $this->response(array('tablas_con_errores' => $tablas), 400);
                 }
             }
             else
@@ -94,6 +113,13 @@ class Historial_controller extends REST_Controller
                           'conducta_medica','solicitud_de_practica','solicitud_interconsultas',
                           'inmunizaciones','seguimiento','datos_clinicos', 'datos_de_laboratorio',    
                           'medicamentos');        
+    }
+    
+    private function _get_array_models(){
+        return array(
+            'historial_model','paciente_model','diagnosticos_model','enfermedades_asociadas_model',
+            'factores_de_riesgo_asociados_model'
+        );
     }
     
 }

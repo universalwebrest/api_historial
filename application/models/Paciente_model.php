@@ -43,9 +43,10 @@ class Paciente_model extends CI_Model
         if ($this->db->affected_rows() == 1)
         {
             return $this->db->insert_id();
+        }else{
+            return NULL;
         }
-        
-        return FALSE;        
+                
     }
     
     public function update($id, $data)
@@ -79,17 +80,17 @@ class Paciente_model extends CI_Model
     private function _setPaciente($paciente)
     {
         return array( 
-            'DNI' => $paciente['dni'],
-            'NOMBRE' => $paciente['nombre'],
-            'FECHA_NACIMIENTO' => $paciente['fecha_nacimiento'],
-            'DOMICILIO' => $paciente['domicilio'],
-            'TELEFONO' => $paciente['telefono'],
-            'GENERO_ID' => $paciente['genero_id'],
-            'ESTADO_CIVIL_ID' => $paciente['estado_civil_id'],
-            'OBRA_SOCIAL_ID' => $paciente['obra_social_id'],
-            'ESTUDIO_ID' => $paciente['estudio_id'],
-            'LOCALIDAD_ID' => $paciente['localidad_id'],
-            'DEPARTAMENTO_ID' => $paciente['departamento_id']
+            'dni' => $paciente['dni'],
+            'nombre' => $paciente['nombre'],
+            'fecha_nacimiento' => $paciente['fecha_nacimiento'],
+            'domicilio' => $paciente['domicilio'],
+            'telefono' => $paciente['telefono'],
+            'genero_id' => $paciente['genero_id'],
+            'estado_civil_id' => $paciente['estado_civil_id'],
+            'obra_social_id' => $paciente['obra_social_id'],
+            'estudio_id' => $paciente['estudio_id'],
+            'localidad_id' => $paciente['localidad_id'],
+            'departamento_id' => $paciente['departamento_id']
         );
     }
     
