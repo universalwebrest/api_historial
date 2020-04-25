@@ -94,5 +94,13 @@ class Paciente_model extends CI_Model
         );
     }
     
+    public function id_exists($id){
+        
+        $this->db->from('paciente');
+        $this->db->select('id');
+        $query = $this->db->get();
+        
+        return in_array((string)$id, $query);            
+    }
+    
 }
-

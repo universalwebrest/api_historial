@@ -10,7 +10,8 @@ require_once APPPATH . '/libraries/Format.php';
  *
  */
 class Historial_controller extends REST_Controller
-{    
+{
+    
     /**
      * Constructor vacio de controlador de historiales 
      */
@@ -18,7 +19,7 @@ class Historial_controller extends REST_Controller
         
         parent::__construct();
         
-        $this->load->model($this->_get_array_models());        
+        $this->load->model('historial_model', 'mymodel');
     }
         
     /**
@@ -32,97 +33,58 @@ class Historial_controller extends REST_Controller
             $this->response("No se proporciono el parametro 'id' de la consulta", 400);
         }
                 
-        $query = $this->historial_model->get($id);
-        
-        $historial = array(
-            'id'            =>$query->id,
-            'hospital_id'   =>$query->hospital_id,
-            'paciente'      =>$this->paciente_model->get($id),
-            'diagnosticos'  =>$this->diagnosticos_model->get($id),
-            'enfermedades_asociadas' =>$this->enfermedades_asociadas_model->get($id),
-            'factores_de_riesgo_asociados' =>$this->factores_de_riesgo_asociados_model->get($id),
-            'antecedentes_familiares' =>$this->antecedentes_familiares_model->get($id)
-        );
+        $query = $this->mymodel->get($id);
                 
-        if (!is_null($historial))
+        if (!is_null($query))
         {
-            $this->response(array('historial' => $historial), 200);
+            $this->response(array('historial' => $query), 200);
         }
         else
         {
             $this->response(array('error' => "ID historial no encontrado"), 400);
         }
-    }
+    }//End function index_get
     
-    public function index_post()
+    public function index_post($id = NULL)
     {
-        if (!$this->post('data'))
+        if (is_null($id) || !$this->post('data'))
         {
-            $this->response(array('error' => "No se recibió el objeto historial"), 400);
+            $this->response(array('error' => "No se recibió el objeto post o ID"), 400);
         }
         else 
         {
             $data = $this->post('data');
             
-            $id = $this->paciente_model->save($data['paciente']);
-            
-            if (!is_null($id))
+            if ($this->mymodel->save($id, $data['hospital_id']))
             {
-                $ok = array();
-                $ok['historial'] = $this->historial_model->save($id, $data['hospital']);
-                $ok['diagnostico'] = $this->diagnosticos_model->save($id);
-                $ok['enfermedades_asociadas'] = $this->enfermedades_asociadas_model->save($id);
-                $ok['factores_de_riesgo_asociados'] = $this->factores_de_riesgo_asociados_model->save($id);
-                $ok['antecedentes_familiares'] = $this->antecedentes_familiares_model->save($id);
-                
-                if (!in_array(FALSE, $ok))
-                {
-                    $this->response(array('id'  => $id), 200);
-                }
-                else
-                {
-                    while ($value = current($ok))
-                    {
-                        if ($value == FALSE)
-                        {
-                            $tablas[] = key($ok);
-                        }                        
-                        next($ok);
-                    }
-                    
-                    $this->response(array('tablas_con_errores' => $tablas), 400);
-                }
+                $this->response(array('response'  => 'Historial creado exitosamente'), 201);
             }
-            else
-            {
+            else {
                 $this->response(array('error' =>"Surgio un error de servidor"), 400);
+            }
+            
+        }
+    }//End function index_post
+    
+    public function update_post($id = NULL) {
+        
+        if (!$this->post('data')) {
+            
+            $this->response(array('error' => "No se recibió el objeto post o ID"), 400);
+        }
+        else{
+            $data = $this->post('data');
+            
+            if ($this->mymodel->update($id, $data)) {
+                
+                $this->response(array('response' => 'Objeto actualizado exitosamente'), 200);
+            }
+            else {
+                $this->response(array('error' => 'No se puede actualizar el objeto'), 400);
             }
         }
     }
     
-    public function update_post($data) {
         
-        $id = $data['id'];        
-        $objeto = $data['objeto'];              
-        $control = $data['control'];        
-        $valor = $data['valor'];
-        
-        $objetos =  array('diagnosticos','enfermedades_asociadas','factores_de_riesgo_asociados',
-                          'antecedentes_familiares','odontologia','nutricion','psicologia',
-                          'enfermeria','oftalmologia','circulatorio','examen_fisico','renal',
-                          'complicaciones_agudas_de_diabetes','pies','laboratorio',
-                          'internaciones_relacionadas_con_enfermedades_de_base','tratamiento_actual',
-                          'conducta_medica','solicitud_de_practica','solicitud_interconsultas',
-                          'inmunizaciones','seguimiento','datos_clinicos', 'datos_de_laboratorio',    
-                          'medicamentos');        
-    }
-    
-    private function _get_array_models(){
-        return array(
-            'historial_model','paciente_model','diagnosticos_model','enfermedades_asociadas_model',
-            'factores_de_riesgo_asociados_model','antecedentes_familiares_model'
-        );
-    }
-    
 }
 

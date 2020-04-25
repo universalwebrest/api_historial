@@ -11,12 +11,12 @@ class Paciente_controller extends REST_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('paciente_model');
+        $this->load->model('paciente_model', 'mymodel');
     }
     
     public function index_get()
     {
-        $pacientes = $this->paciente_model->get();
+        $pacientes = $this->mymodel->get();
         
         if (!is_null($pacientes))
         {
@@ -34,7 +34,7 @@ class Paciente_controller extends REST_Controller
             $this->response(array("error" => "Debe proporcionar valor ID de paciente como parametro"), 400);
         }
         
-        $paciente = $this->paciente_model->get($id);
+        $paciente = $this->mymodel->get($id);
                 
         if (!is_null($paciente))
         {
@@ -53,7 +53,7 @@ class Paciente_controller extends REST_Controller
             $this->response(array('error' => 'No hay paciente para registrar'), 400);
         }
         
-        $id = $this->paciente_model->save($this->post('paciente'));
+        $id = $this->my_model->save($this->post('paciente'));
         
         if (!is_null($id))
         {
@@ -72,7 +72,7 @@ class Paciente_controller extends REST_Controller
             $this->response(null, 400);
         }
         
-        $update = $this->paciente_model->update($id, $this->post('data'));
+        $update = $this->mymodel->update($id, $this->post('data'));
         
         if ($update)
         {
@@ -91,7 +91,7 @@ class Paciente_controller extends REST_Controller
             $this->response(null, 400);            
         }
         
-        $delete = $this->paciente_model->delete($id);
+        $delete = $this->mymodel->delete($id);
         
         if ($delete)
         {

@@ -2,9 +2,12 @@
 
 class Historial_model extends CI_Model
 {
+    private $mytable;
+    
     public function __construct()
     {
-        parent::__construct();        
+        parent::__construct();
+        $this->mytable = 'historial';
     }
     
     public function get($id)
@@ -31,8 +34,32 @@ class Historial_model extends CI_Model
         {
             return TRUE;
         }
+        else{
+            return FALSE;
+        }
+    }
+    
+    public function update($id, $data) {
         
-        return FALSE;     
+        $campo = $data['campo'];
+        
+        $nuevo_valor = $data['nuevo_valor'];
+        
+        if ($this->db->field_exists($campo, $this->mytable)) {
+            
+            $this->db->set($campo, $nuevo_valor);
+            
+            $this->db->where('id', $id);
+            
+            $this->db->update($this->mytable);
+            
+            if ($this->db->affected_rows()==1) {
+                return TRUE;
+            }
+        }
+        else{
+            return FALSE;
+        }
     }
         
 }
