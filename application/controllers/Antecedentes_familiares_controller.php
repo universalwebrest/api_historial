@@ -16,7 +16,7 @@ class Antecedentes_familiares_controller extends REST_Controller
         
         if (is_null($id))
         {
-            $this->response(array('error' => 'El ID fue null'), 400);
+            $this->response(array('error' => 'El ID fue null'), REST_Controller::HTTP_BAD_REQUEST);
         }
         else{
             
@@ -24,10 +24,10 @@ class Antecedentes_familiares_controller extends REST_Controller
             
             if (!is_null($query))
             {
-                $this->response(array('antecedentes_familiares' => $query), 200);
+                $this->response(array('antecedentes_familiares' => $query), REST_Controller::HTTP_OK);
             }
             else{
-                $this->response(array('error' => 'El ID es inexistente'), 400);
+                $this->response(array('error' => 'El ID es inexistente'), REST_Controller::HTTP_BAD_REQUEST);
             }
         }
     }//End method index_get
@@ -36,17 +36,17 @@ class Antecedentes_familiares_controller extends REST_Controller
         
         if (is_null($id)) {
             
-            $this->response(array('error' => 'No se propociono ID o es incorrecto'), 400);            
+            $this->response(array('error' => 'No se propociono ID o es incorrecto'), REST_Controller::HTTP_BAD_REQUEST);            
         }
         else{
             
             if ($this->mymodel->save($id)) {
                 
-                $this->response(array('response' => 'El objeto fue creado exitosamente'), 201);
+                $this->response(array('response' => 'El objeto fue creado exitosamente'), REST_Controller::HTTP_CREATED);
             }
             else{
                 
-                $this->response(array('error' => 'Ocurrio un error en el servidor'), 400);
+                $this->response(array('error' => 'Ocurrio un error en el servidor'), REST_Controller::HTTP_BAD_REQUEST);
             }
         }        
     }//End method index_post
@@ -55,7 +55,7 @@ class Antecedentes_familiares_controller extends REST_Controller
         
         if (is_null($id) || is_null($this->post('data'))) {
             
-            $this->response(array('error' => 'No se proporciono objeto post o ID'));
+            $this->response(array('error' => 'No se proporciono objeto post o ID'), REST_Controller::HTTP_BAD_REQUEST);
         }
         else{
             
@@ -63,10 +63,10 @@ class Antecedentes_familiares_controller extends REST_Controller
             
             if ($this->mymodel->update($id, $data)) {
                 
-                $this->response(array('response' => 'El objeto fue actualizado exitosamente'));
+                $this->response(array('response' => 'El objeto fue actualizado exitosamente'), REST_Controller::HTTP_OK);
             }
             else{
-                $this->response(array('error' => 'Ocurrio un error en el servidor'), 400);
+                $this->response(array('error' => 'Ocurrio un error en el servidor'), REST_Controller::HTTP_BAD_REQUEST);
             }
         }        
     }//Fin metodo update_post
