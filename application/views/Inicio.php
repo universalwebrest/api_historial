@@ -1,4 +1,3 @@
-<?php ?>
 <html lang="es">
 <head>
 <title>Mi página web</title>
@@ -9,4 +8,4 @@
 <h2>Wellcom to codeigniter</h2>
 
 </body>
-</html> 
+</html>

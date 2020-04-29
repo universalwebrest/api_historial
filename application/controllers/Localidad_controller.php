@@ -53,7 +53,7 @@ class Localidad_controller extends REST_Controller
         }
         
     }
-    
+        
     public function index_post()
     {
         if ($this->post('localidad'))
