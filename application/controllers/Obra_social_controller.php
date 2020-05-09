@@ -11,23 +11,18 @@ class Obra_social_controller extends REST_Controller
         $this->load->model('obra_social_model', 'mymodel');
     }
     
-    public function index_get($id = NULL) {
-        
-        if (is_null($id))
-        {
-            $this->response(array('error' => 'El ID fue null'), 400);
-        }
-        else{
-            
-            $query = $this->mymodel->get($id);
-            
-            if (!is_null($query))
-            {
-                $this->response(array('obra_social' => $query), 200);
-            }
-            else{
-                $this->response(array('error' => 'El ID es inexistente'), 400);
-            }
+    public function index_get() {
+                   
+        $query = $this->mymodel->get();
+
+        if (! is_null($query)) {
+            $this->response(array(
+                'obra_social' => $query
+            ), 200);
+        } else {
+            $this->response(array(
+                'error' => 'No existen obra social registrados ...'
+            ), 404);
         }
     }//End method index_get
     

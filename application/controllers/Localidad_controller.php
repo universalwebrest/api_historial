@@ -26,7 +26,7 @@ class Localidad_controller extends REST_Controller
         }
         else
         {
-            $this->response(array("localidades" => $query), 200);
+            $this->response(array("localidad" => $query), 200);
         }
         
     }

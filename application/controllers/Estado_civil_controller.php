@@ -11,23 +11,22 @@ class Estado_civil_controller extends REST_Controller
         $this->load->model('estado_civil_model', 'mymodel');
     }
     
-    public function index_get($id = NULL) {
+    public function index_get() {
         
-        if (is_null($id))
-        {
-            $this->response(array('error' => 'El ID fue null'), 400);
-        }
-        else{
+        $query = $this->mymodel->get();
+        
+        if (! is_null($query)) {
             
-            $query = $this->mymodel->get($id);
+            $this->response(array(
+                'estado_civil' => $query
+            ), 200);
             
-            if (!is_null($query))
-            {
-                $this->response(array('estado_civil' => $query), 200);
-            }
-            else{
-                $this->response(array('error' => 'El ID es inexistente'), 400);
-            }
+        } else {
+            
+            $this->response(array(
+                'error' => 'No existen estado civil registrados ...'
+            ), 404);
+            
         }
     }//End method index_get
     

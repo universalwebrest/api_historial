@@ -19,7 +19,7 @@ class Departamento_controller extends REST_Controller
         
         if (!is_null($departamentos))
         {
-            $this->response(array('departamentos' => $departamentos), 200);
+            $this->response(array('departamento' => $departamentos), 200);
         }else
         {
             $this->response(array('error' => 'No existen departamentos registrados ...'), 404);

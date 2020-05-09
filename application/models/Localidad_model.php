@@ -4,39 +4,22 @@ class Localidad_model extends CI_Model
 {
     public function __construct()
     {
-        parent::__construct();
-                
-        $this->load->library('localidad');
+        parent::__construct();                
     }
     
-    public function get($id = null)
-    {
-        // Opcion para cargar todos los registros de LOCALIDAD
-        if (is_null($id))
-        {
-            $localidades = $this->db->get('localidad');
+    public function get()
+    {        
+        $localidades = $this->db->get('localidad');
+
+        if ($localidades->num_rows() > 0) {
             
-            if ($localidades->num_rows() > 0)
-            {
-                return $localidades->custom_result_object('localidad');
-            }
-            else
-            {
-                return null;
-            }
-        }
-        else //Opcion para cargar solo un regitro por medio del ID pasado desde el controller
-        {
-            $this->db->from('localidad');
+            return $localidades->result();
             
-            //$this->db->select('ID, DESCRIPCION, CODIGO_POSTAL, DEPARTAMENTO_ID');
+        } else {
             
-            $this->db->where('id', $id);
+            return null;
             
-            $localidad = $this->db->get();
-            
-            return $localidad->row();
-        }
+        }        
     }
     
     public function save($localidad)

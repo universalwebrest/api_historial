@@ -7,36 +7,19 @@ class Departamento_model extends CI_Model
         parent::__construct();        
     }
     
-    public function get($id = null)
-    {        
-        $this->db->select('id, descripcion');
-        
-        if (is_null($id))
-        {
-            $query = $this->db->get('departamento');
+    public function get()
+    {           
+        $query = $this->db->get('departamento');
+
+        if ($query->num_rows() > 0) {
             
-            if ($query->num_rows() > 0)
-            {
-                return $query->result();
-            }
+            return $query->result();
+            
+        } else {
             
             return null;
         }
-        else 
-        {
-            $this->db->where('id', $id);
             
-            $query = $this->db->get('departamento');
-            
-            if ($query->num_rows() == 1)
-            {
-                return $query->row();
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
     
     public function save($departamento)

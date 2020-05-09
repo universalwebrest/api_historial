@@ -9,14 +9,12 @@ class Obra_social_model extends CI_Model
         $this->mytable = 'obra_social';
     }
     
-    public function get($id){
-        
-        $this->db->where('id', $id);
-        
+    public function get(){
+                
         $query = $this->db->get($this->mytable);
         
-        if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+        if (!is_null($query) && $query->num_rows()>=1){
+            return $query->result();
         }else{
             return NULL;
         }
