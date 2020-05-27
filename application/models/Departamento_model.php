@@ -12,7 +12,7 @@ class Departamento_model extends CI_Model
         $query = $this->db->get('departamento');
 
         if ($query->num_rows() > 0) {
-            
+                        
             return $query->result();
             
         } else {

@@ -132,4 +132,65 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array(
+    'antecedentes_familiares_model',
+    'circulatorio_model',
+    'complicaciones_agudas_de_diabetes_model',
+    'conducta_medica_model',
+    'datos_clinicos_model',
+    'datos_laboratorio_model',
+    'departamento_model',
+    'diagnosticos_model',
+    'enfermedad_model',
+    'enfermedades_asociadas_model',
+    'enfermeria_model',
+    'estado_civil_model',
+    'estudio_model',
+    'examen_fisico_model',
+    'factores_de_riesgo_asociados_model',
+    'genero_model',
+    'historial_model',
+    'inmunizaciones_model',
+    'internaciones_relaciondas_con_enfermedad_de_base_model',
+    'laboratorio_model',
+    'localidad_model',
+    'medicamentos_model',
+    'nutricion_model',
+    'obra_social_model',
+    'odontologia_model',
+    'oftalmologia_model',
+    'paciente_model',
+    'psicologia_model',
+    'renal_model',
+    'seguimiento_model',
+    'solicitud_interconsulta_model',    
+    'solicitud_practica_model',
+    'tipos_enfermedad_model',
+    'tratamiento_actual_model'
+); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

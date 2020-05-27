@@ -9,17 +9,16 @@ class Departamento_controller extends REST_Controller
 {
     public function __construct()
     {
-        parent::__construct();
-        $this->load->model('departamento_model');        
+        parent::__construct();        
     }
     
     public function index_get()
     {
-        $departamentos = $this->departamento_model->get();
-        
-        if (!is_null($departamentos))
+        $departamento = $this->departamento_model->get();
+                
+        if (!is_null($departamento))
         {
-            $this->response(array('departamento' => $departamentos), 200);
+            $this->response(array('departamento' => $departamento), 200);
         }else
         {
             $this->response(array('error' => 'No existen departamentos registrados ...'), 404);

@@ -15,7 +15,7 @@ class Obra_social_controller extends REST_Controller
                    
         $query = $this->mymodel->get();
 
-        if (! is_null($query)) {
+        if (!is_null($query)) {
             $this->response(array(
                 'obra_social' => $query
             ), 200);

@@ -22,6 +22,21 @@ class Localidad_model extends CI_Model
         }        
     }
     
+    public function getArray($departamento_id)
+    {
+        $localidades = $this->db->get_where('localidad', array('departamento_id' => $departamento_id));
+        
+        if ($localidades->num_rows() > 0) {
+            
+            return $localidades->result();
+            
+        } else {
+            
+            return null;
+            
+        }
+    }
+    
     public function save($localidad)
     {
         $data = $this->_setLocalidad($localidad);

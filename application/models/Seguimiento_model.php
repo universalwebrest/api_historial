@@ -9,14 +9,20 @@ class Seguimiento_model extends CI_Model
         $this->mytable = 'seguimiento';
     }
     
-    public function get($id){
+    public function get($id_historial){
         
-        $this->db->where('id', $id);
+        $this->db->where('id_historial', $id_historial);
         
         $query = $this->db->get($this->mytable);
         
-        if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+        if (!is_null($query) && $query->num_rows()>0){
+            foreach ($query->result() as $seguimiento) {
+                $seguimiento->datos_clinicos = $this->datos_clinicos_model->get($seguimiento->id);
+                $seguimiento->datos_laboratorio = $this->datos_laboratorio_model->get($seguimiento->id);
+                $seguimiento->medicamentos = $this->medicamentos_model->get($seguimiento->id);
+            }
+            return $query->result();
+            
         }else{
             return NULL;
         }

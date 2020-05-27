@@ -15,8 +15,8 @@ class Factores_de_riesgo_asociados_model extends CI_Model
         
         $query = $this->db->get_where($this->mytable, $data);
         
-        if (!is_null($query) && $query->num_rows()==1)
-        {
+        if (!is_null($query) && $query->num_rows()==1)        
+        {           
             return $query->row();
         }
         else

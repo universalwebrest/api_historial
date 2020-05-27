@@ -20,7 +20,7 @@ class Seguimiento_controller extends REST_Controller
         else{
             
             $query = $this->mymodel->get($id);
-            
+                                                                       
             if (!is_null($query))
             {
                 $this->response(array('seguimiento' => $query), 200);
