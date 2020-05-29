@@ -1,0 +1,120 @@
+<div class="row mt-2 mb-2">
+
+	<div class="col-lg-12">
+
+		<!-- Begin first row of paciente -->
+		<div class="row">
+
+			<div class="form-group col-lg-4 ">
+				<label for="txt_nombre">Apellido y Nombre</label> <input type="text"
+					class="form-control" id="txt_nombre" ng-model="vm.nombre">
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_dni">DNI</label> <input type="text"
+					class="form-control" id="txt_dni" ng-model="vm.dni">
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="rad_genero">Genero</label>
+				<div>
+					<label class="btn"> <input type="radio"
+						ng-model="vm.genero" id="rad_genero_fem" value="1"> FEM.
+					</label> <label class="btn"> <input type="radio"
+						ng-model="vm.genero" id="rad_genero_masc" value="2"> MASC.
+					</label>
+				</div>
+			</div>
+
+			<div class="form-group col-lg-4">
+				<label for="rad_estudios">Estudios</label>
+				<div>
+					<label class="btn"> <input type="radio"
+						ng-model="vm.estudios" id="rad_estudios_ning" value="1">
+						NING.
+					</label> <label class="btn"> <input type="radio"
+						ng-model="vm.estudios" id="rad_estudios_prim" value="2">
+						PRIM.
+					</label> <label class="btn"> <input type="radio"
+						ng-model="vm.estudios" id="rad_estudios_sec" value="3">
+						SEC.
+					</label> <label class="btn"> <input type="radio"
+						ng-model="vm.estudios" id="rad_estudios_univ" value="4">
+						UNIV.
+					</label>
+				</div>
+			</div>
+
+		</div>
+		<!-- End first row input -->
+
+		<!-- Begin second row of paciente -->
+		<div class="row">
+
+			<div class="form-group col-lg-4">
+				<label for="txt_domicilio">Domicilio</label> 
+				<input type="text" class="form-control" id="txt_domicilio" ng-model="vm.domicilio">
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_fecha_nacimiento">Fecha de Nacimiento</label>
+				<input type="date" class="form-control" id="txt_fecha_nacimiento" ng-model="vm.fecha_nacimiento">
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_obra_social">Obra Social</label>
+				<select class="form-control" id="txt_obra_social" 
+					ng-model="vm.obra_social" 
+					ng-options="obra_social.descripcion for obra_social in vm.array_obra_social">
+				</select>
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_estado_civil">Estado Civil</label>
+				<select class="form-control" id="txt_estado_civil"
+					ng-model="vm.estado_civil"
+					ng-options="estado_civil.descripcion for estado_civil in vm.array_estado_civil">
+				</select>
+			</div>
+
+			<div class="form-group col-lg-1">
+				<label for="txt_edad">Edad</label> <input type="text"
+					class="form-control" id="txt_edad" " ng-model="vm.edad">
+			</div>
+
+		</div>
+		<!-- End second row -->
+
+		<!-- Begin third row of paciente  -->
+		<div class="row">
+			
+			<div class="form-group col-lg-4">
+				<label for="sel_departamento">Departamento</label>
+				<select class="form-control" id="sel_departamento" ng-model="vm.departamento"
+						ng-options="departamento.descripcion for departamento in vm.array_departamento">
+				</select>
+			</div>
+			
+			<div class="form-group col-lg-4">
+				<label for="sel_localidad">Localidad</label>
+				<select class="form-control" id="sel_localidad" ng-model="vm.localidad"
+						ng-options="localidad.descripcion for localidad in vm.array_localidad">
+				</select>
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_departamento">Codigo Postal</label>
+				<input class="form-control" id="txt_departamento" ng-model="vm.localidad.codigo_postal">
+			</div>
+
+			<div class="form-group col-lg-2">
+				<label for="txt_telefono">Telefono</label>
+				<input type="text" class="form-control" id="txt_telefono" ng-model="vm.telefono">
+			</div>
+
+		</div>
+		<!-- End third row of paciente -->
+
+	</div>
+
+</div>
