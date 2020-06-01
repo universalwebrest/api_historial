@@ -3,14 +3,18 @@
 	<div class="card-header">
 		<div class="row">
 			<div class="col-lg-4">
-				<h5>HISTORIAL</h5>
+				<h5>NUEVO HISTORIAL</h5>
 			</div>
 			<div class="col-lg-5"></div>
 			<div class="col-lg-3">
-				<a href="#historiales" class="btn btn-outline-primary" role="button" aria-pressed="true" >
+				<a ng-click="vm.guardar_historial()" class="btn btn-outline-primary" role="button" aria-pressed="true" >
 					<!-- <img class="mr-2" src="web/icons/plus-8x.png" width="15" height="15" alt="Logo"> -->
-					CERRAR
-				</a>				
+					GUARDAR
+				</a>
+				<a href="#historiales" class="btn btn-outline-danger" role="button" aria-pressed="true" >
+					<!-- <img class="mr-2" src="web/icons/plus-8x.png" width="15" height="15" alt="Logo"> -->
+					CANCELAR
+				</a>		
 			</div>
 		</div>
 	</div>
@@ -89,8 +93,8 @@
 					</div>
 		
 					<div class="form-group col-lg-1">
-						<label for="txt_edad">Edad</label> <input type="text"
-							class="form-control" id="txt_edad" " ng-model="vm.edad">
+						<label for="txt_edad">Edad</label>
+						<input type="text" class="form-control" id="txt_edad" " ng-model="vm.edad" disabled>
 					</div>
 				</div>
 				<!-- End second row -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -34,10 +34,25 @@
         					<a class="nav-link" href="#">Home</a>
         			    </li>
         			    <li class="nav-item">
-        			        <a class="nav-link" href="#pacientes">Pacientes</a>
+        			        <a class="nav-link" href="#historiales">Historiales</a>
         			    </li>
         			    <li class="nav-item">
-        			        <a class="nav-link" href="#personal">Personal</a>
+        			        <a class="nav-link" href="#historial">Historial</a>
+        			    </li>
+        			    <li class="nav-item">
+        			        <a class="nav-link" href="#diagnosticos">Diagnosticos</a>
+        			    </li>
+        			    <li class="nav-item">
+        			        <a class="nav-link" href="#controles_clinicos">Controles Clinicos</a>
+        			    </li>
+        			    <li class="nav-item">
+        			        <a class="nav-link" href="#laboratorio">Laboratorio</a>
+        			    </li>
+        			    <li class="nav-item">
+        			        <a class="nav-link" href="#tratamiento">Tratamiento</a>
+        			    </li>
+        			    <li class="nav-item">
+        			        <a class="nav-link" href="#seguimiento">Seguimiento</a>
         			    </li>
         			</ul>
         			    	
@@ -52,20 +67,17 @@
     	<ng-view></ng-view>
 	</div>
 	
-	<!-- JQuery -->
+	
 	<script src="web/js/jquery-3.4.1.slim.min.js"></script>
 	<script src="web/js/popper.min.js"></script>
-	
-	<!-- Bootstrap js -->
 	<script src="web/js/bootstrap.min.js"></script>
-	
-	<!-- AngularJS -->	
 	<script src="web/js/angular-1.2.32.min.js"></script>	
 	<script src="https://code.angularjs.org/1.2.32/angular-route.min.js" ></script>
 	
 	<!-- myapp js -->
 	<script src="web/js/dirPagination.js"></script>
-	<script src="app/routes.js"></script>
+	<script src="app/routes.js"></script>	
+	<script src="app/services.js"></script>
 	<script src="app/controllers.js"></script>
 
 </body>

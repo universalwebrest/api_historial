@@ -51,13 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'inicio';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = TRUE;
+$route['translate_uri_dashes'] = FALSE;
+$route['templates/(:any)'] = "templates/view/$1";
 
-$route['pacientes']['get'] = 'pacientes/index';
-$route['pacientes/(:num)']['get'] = 'pacientes/find/$1';
-$route['pacientes']['post'] = 'pacientes/index';
-$route['pacientes/(:num)']['post'] = 'pacientes/update/$1';
-$route['pacientes/(:num)']['delete'] = 'pacientes/index/$1';
+$route['pacientes']['get'] = 'paciente_controller/index';
+$route['pacientes/(:num)']['get'] = 'paciente_controller/find/$1';
+$route['pacientes']['post'] = 'paciente_controller/index';
+$route['pacientes/(:num)']['post'] = 'paciente_controller/update/$1';
+$route['pacientes/(:num)']['delete'] = 'paciente_controller/index/$1';
 
 /*
 | -------------------------------------------------------------------------
