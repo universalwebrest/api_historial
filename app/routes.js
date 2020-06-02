@@ -4,7 +4,7 @@ app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'web/templates/home.html'
+                templateUrl:'web/templates/home.html'
             }).
             when('/historiales', {
                 templateUrl: 'web/templates/buscar.html',
