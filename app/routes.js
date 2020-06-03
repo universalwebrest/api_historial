@@ -8,7 +8,7 @@ app.config(['$routeProvider',
             }).
             when('/historiales', {
                 templateUrl: 'web/templates/buscar.html',
-                controller: 'buscar', controllerAs: 'vm'
+                controller: 'buscar'
             }).
             when('/nuevo', {
                 templateUrl: 'web/templates/nuevo.html',

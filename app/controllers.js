@@ -1,3 +1,4 @@
+
 app.controller('abrir', function(historialService, $routeParams) {
 	var vm = this;
 	
@@ -47,14 +48,35 @@ app.controller('nuevo', function($location) {
 	
 });
 
-app.controller('buscar', function(pacienteService, $location) {
+app.controller('buscar',['pacienteService', 
+
+	function(pacienteService, $location) {
 	
-	var vm = this;
-	
-	vm.pacientes = pacienteService.getPacientes();
+		var vm = this;
 		
-	vm.abrir_historial = function(id) {
-		$location.path('/personal/'+id);
+		vm.pacientes = pacienteService.getPacientes().then(function(pacientes){return pacientes});
+		alert(vm.pacientes);
+		
+		vm.abrir_historial = function(id) {
+			$location.path('/personal/'+id);
+			
+		}
 	}
-				
-});
+]);
+
+
+app.factory('pacienteService', ['$http',
+	function($http) {
+		var myService = {		
+				getPacientes : function() {				
+					var parametros = {};
+					parametros.url = 'index.php/pacientes';
+					parametros.method = 'GET';
+					$http(parametros).then(function(response) {
+							return response.data.pacientes;						
+						});
+				}
+		};		
+		return myService;
+	}
+]);
