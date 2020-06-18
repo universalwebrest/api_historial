@@ -76,7 +76,7 @@ class Paciente_controller extends REST_Controller
         
         if ($update)
         {
-            $this->response(array('response' => 'El paciente fue actualizado satisfactoriamente'), 200);
+            $this->response(array('response' => true), 200);
         }
         else
         {

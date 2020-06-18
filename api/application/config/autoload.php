@@ -149,6 +149,7 @@ $autoload['model'] = array(
     'examen_fisico_model',
     'factores_de_riesgo_asociados_model',
     'genero_model',
+    'hospital_model',
     'historial_model',
     'inmunizaciones_model',
     'internaciones_relaciondas_con_enfermedad_de_base_model',

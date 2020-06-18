@@ -1,7 +1,5 @@
-'use strict';
-
-angular.module('historialApp', [
-  'ngRoute',
-  'historialList',
-  'historialDetails'
-]);
+angular.module("historialApp", [
+		  	  "ngRoute",
+		  	  "angularUtils.directives.dirPagination",
+		  	  "debounce"
+		  ]);

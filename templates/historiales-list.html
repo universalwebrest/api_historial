@@ -13,9 +13,13 @@
 						</div>
 						<div class="col-lg-5"></div>
 						<div class="col-lg-3">
-							<a href="#nuevo" class="btn btn-outline-primary" role="button" aria-pressed="true" >
-								<img class="mr-2" src="icons/plus-8x.png" width="15" height="15" alt="Logo">
-								NUEVO HISTORIAL
+							<a href="#/new" class="btn btn-outline-primary" role="button" aria-pressed="true" >
+								<!-- <img class="mr-2" src="icons/plus-8x.png" width="15" height="15" alt="Logo"> -->
+								CREAR HISTORIAL
+							</a>
+							<a href="#/home" ng-click="vm.exit()" class="btn btn-outline-danger" role="button" aria-pressed="true" >
+								<!-- <img class="mr-2" src="icons/plus-8x.png" width="15" height="15" alt="Logo"> -->
+								SALIR
 							</a>
 						</div>
 						
@@ -34,9 +38,11 @@
 					</div>
 					<div class="card-body" style="height: 250px;">
 						 <!--  -->
-						<div class="row form-inline mb-2 rowhover" dir-paginate="paciente in vm.pacientes | filter:vm.paciente_buscado | itemsPerPage:5">
+						<div class="row form-inline mb-2 rowhover" 
+							 dir-paginate="paciente in vm.pacientes | filter:vm.paciente_buscado | itemsPerPage:5"
+							 ng-click="vm.open(paciente.id)">
 						    <div class="col-lg-1 text-center">						    							    	
-						    	<button type="button" class="btn btn-outline-primary" ng-click="vm.abrir_historial(paciente.id)">
+						    	<button type="button" class="btn btn-outline-primary">
 						    		<img src="icons/external-link-8x.png" width="10" height="10" alt="Logo" >
 						    	</button>
 						    </div>

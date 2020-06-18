@@ -60,6 +60,14 @@ $route['pacientes']['post'] = 'paciente_controller/index';
 $route['pacientes/(:num)']['post'] = 'paciente_controller/update/$1';
 $route['pacientes/(:num)']['delete'] = 'paciente_controller/index/$1';
 
+$route['historial/(:num)']['get'] = 'historial_controller/index/$1';
+$route['historial']['post'] = 'historial_controller/create';
+
+$route['obra_social']['get'] = 'obra_social_controller/index';
+$route['estado_civil']['get'] = 'estado_civil_controller/index';
+$route['departamento']['get'] = 'departamento_controller/index';
+$route['localidad']['get'] = 'localidad_controller/index';
+
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

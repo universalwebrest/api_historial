@@ -141,7 +141,7 @@ class Historial_controller extends REST_Controller
         $this->datos_laboratorio_model->save($id_seguimiento);
         $this->medicamentos_model->save($id_seguimiento);
         
-        $this->response(array('response'=>$id), 200);
+        $this->response(array('id'=>$id), 200);
     }
         
     public function update_post($id = NULL) {

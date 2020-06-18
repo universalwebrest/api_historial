@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="main-app">
+<html data-ng-app="historialApp">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,63 +7,30 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Alpha</title>
-  <link rel="stylesheet" href="css/bootstrap_lumen.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
     <!-- Begin Page Content -->
     <div class="container-fluid">
-    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        		<span class="navbar-toggler-icon"></span>
-        	</button>        	
-        	<a class="navbar-brand" href="#">Navbartion</a>			
-        		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        			  	
-        			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        				<li class="nav-item">
-        					<a class="nav-link" href="#/">Home</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/historiales">Historiales</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/personal">Historial</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/diagnosticos">Diagnosticos</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/controles_clinicos">Controles Clinicos</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/laboratorio">Laboratorio</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/tratamiento">Tratamiento</a>
-        			    </li>
-        			    <li class="nav-item">
-        			        <a class="nav-link" href="#/seguimiento">Seguimiento</a>
-        			    </li>
-        			</ul>        			    	
-        			<form class="form-inline">
-                    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>        			    				    				    	
-        		</div>
-        </nav>			
-    	<ng-view></ng-view>
+        				
+    	<div ng-view></div>
+    	
 	</div>
 	
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/popper.min.js"></script>	
 	<script src="js/bootstrap.min.js"></script>	
-	<script src="js/angular-1.7.5.min.js"></script>	
+	<script src="js/angular.min.js"></script>	
 	<script src="js/angular-route.js" ></script>
-	<script src="js/dirPagination.js"></script>
+	<script src="js/dirPagination.js"></script>	
+	<script src="js/angular-debounce.js"></script>
 	<script src="app/module.js"></script>	
 	<script src="app/config.js"></script>
-	<script src="app/historial-list/historial-list.module.js"></script>
-	<script src="app/historial-list/historial-list.component.js"></script>
+	<script src="app/services.js"></script>
+	<script src="app/controllers/homeController.js"></script>
+	<script src="app/controllers/listController.js"></script>
+	<script src="app/controllers/newController.js"></script>
+	<script src="app/controllers/editController.js"></script>
 </body>
 </html>

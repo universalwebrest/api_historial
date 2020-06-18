@@ -1,16 +1,28 @@
-'use strict';
-
-angular.
-  module('historialApp').
-  config(['$routeProvider',
-    function config($routeProvider) {
-      $routeProvider.
-        when('/historiales', {
-          template: '<historial-list></historial-list>'
-        }).
-        when('/historiales/:historialId', {
-          template: '<historial-detail></historial-detail>'
-        }).
-        otherwise('/historiales');
-    }
-  ]);
+angular.module('historialApp').
+	config(['$routeProvider',
+		function ($routeProvider) {
+			$routeProvider.
+				when('/home', {
+					controller: 'homeController',
+					controllerAs: 'vm',
+					templateUrl: 'templates/historiales-home.html'
+					
+				}).
+				when('/list', {
+					controller: 'listController',
+					controllerAs: 'vm',
+					templateUrl: '/templates/historiales-list.html'
+				}).
+				when('/new', {
+					controller: 'newController',
+					controllerAs: 'vm',
+					templateUrl: '/templates/historiales-new.html'
+				}).
+				when('/edit/:id', {
+					controller: 'editController',
+					controllerAs: 'vm',
+					templateUrl: '/templates/historiales-edit.html'
+				}).
+				otherwise('/home');
+		}
+	]);
