@@ -67,6 +67,7 @@ $route['obra_social']['get'] = 'obra_social_controller/index';
 $route['estado_civil']['get'] = 'estado_civil_controller/index';
 $route['departamento']['get'] = 'departamento_controller/index';
 $route['localidad']['get'] = 'localidad_controller/index';
+$route['enfermedad']['get'] = 'enfermedad_controller/index';
 
 /*
 | -------------------------------------------------------------------------

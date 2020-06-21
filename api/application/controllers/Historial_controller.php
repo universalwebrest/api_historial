@@ -53,7 +53,12 @@ class Historial_controller extends REST_Controller
         $solicitud_interconsulta = $this->solicitud_interconsulta_model->get($id);
         $inmunizaciones = $this->inmunizaciones_model->get($id);
         $solicitud_practica = $this->solicitud_practica_model->get($id);
-        $seguimientos = $this->seguimiento_model->get($id);        
+        $seguimientos = $this->seguimiento_model->get($id);
+        $obra_sociales = $this->obra_social_model->get();
+        $estado_civiles = $this->estado_civil_model->get();
+        $departamentos = $this->departamento_model->get();
+        $localidades = $this->localidad_model->get();
+        $enfermedades = $this->enfermedad_model->getAll();
         
         $historial = array(
             'historial' => $query,
@@ -77,7 +82,12 @@ class Historial_controller extends REST_Controller
             'solicitud_interconsulta' => $solicitud_interconsulta,
             'inmunizaciones' => $inmunizaciones,
             'solicitud_practica' => $solicitud_practica,
-            'seguimientos' => $seguimientos
+            'seguimientos' => $seguimientos,
+            'obra_sociales' => $obra_sociales,
+            'estado_civiles' => $estado_civiles,
+            'departamentos' => $departamentos,
+            'localidades' => $localidades,
+            'enfermedades' => $enfermedades
         );
         
         if (!is_null($query))

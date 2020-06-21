@@ -17,11 +17,16 @@
 			<label for="txt_mensajes" class="sr-only">Mensajes</label>
 			<input type="text" readonly class="form-control-plaintext" id="txt_mensajes" value="{{vm.mensajes}}">
 		</div>
-    	<button class="btn btn-outline-success my-2 my-sm-0" ng-click="vm.closeHistorial()" ng-disabled="vm.close_enabled" type="submit">Cerrar</button>
+    	<button class="btn btn-outline-success my-2 my-sm-0" ng-click="vm.closeHistorial()" ng-disabled="vm.close_disabled" type="submit">Cerrar</button>
     </div>
   </div>
 </nav>
 
 <div class="slide-animate-container">
-	<div class="slide-animate" ng-include="vm.template"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/personal.html'"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/diagnosticos.html'"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/controles_clinicos.html'"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/laboratorio.html'"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/tratamiento.html'"></div>
+	<div class="slide-animate" ng-include="'/templates/sections/seguimiento.html'"></div>
 </div>
