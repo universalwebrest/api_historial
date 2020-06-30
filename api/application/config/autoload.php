@@ -152,7 +152,7 @@ $autoload['model'] = array(
     'hospital_model',
     'historial_model',
     'inmunizaciones_model',
-    'internaciones_relaciondas_con_enfermedad_de_base_model',
+    'internaciones_relacionadas_con_enfermedad_de_base_model',
     'laboratorio_model',
     'localidad_model',
     'medicamentos_model',

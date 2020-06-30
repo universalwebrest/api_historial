@@ -16,7 +16,13 @@ class Complicaciones_agudas_de_diabetes_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->tuvo_episodios = (bool)$row->tuvo_episodios;
+            $row->cantidad_episodios_ultimo_anio = (int)$row->cantidad_episodios_ultimo_anio;
+            $row->hipoglucemia_severas = (int)$row->hipoglucemia_severas;
+            $row->cetoacidosis = (int)$row->cetoacidosis;
+            return $row;
         }else{
             return NULL;
         }

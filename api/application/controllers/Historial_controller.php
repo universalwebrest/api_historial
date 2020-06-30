@@ -48,6 +48,7 @@ class Historial_controller extends REST_Controller
         $examen_fisico = $this->examen_fisico_model->get($id);
         $complicaciones_agudas_de_diabetes = $this->complicaciones_agudas_de_diabetes_model->get($id);
         $laboratorio = $this->laboratorio_model->get($id);
+        $internaciones_relacionadas_con_enfermedad_de_base = $this->internaciones_relacionadas_con_enfermedad_de_base_model->get($id);
         $tratamiento_actual = $this->tratamiento_actual_model->get($id);
         $conducta_medica = $this->conducta_medica_model->get($id);
         $solicitud_interconsulta = $this->solicitud_interconsulta_model->get($id);
@@ -77,6 +78,7 @@ class Historial_controller extends REST_Controller
             'examen_fisico' => $examen_fisico,
             'complicaciones_agudas_de_diabetes' => $complicaciones_agudas_de_diabetes,
             'laboratorio' => $laboratorio,
+            'internaciones_relacionadas_con_enfermedad_de_base' => $internaciones_relacionadas_con_enfermedad_de_base,
             'tratamiento_actual' => $tratamiento_actual,
             'conducta_medica' => $conducta_medica,
             'solicitud_interconsulta' => $solicitud_interconsulta,
@@ -141,6 +143,7 @@ class Historial_controller extends REST_Controller
         $this->examen_fisico_model->save($id);
         $this->complicaciones_agudas_de_diabetes_model->save($id);
         $this->laboratorio_model->save($id);
+        $this->internaciones_relacionadas_con_enfermedad_de_base_model->save_empty($id);
         $this->tratamiento_actual_model->save($id);
         $this->conducta_medica_model->save($id);
         $this->solicitud_interconsulta_model->save($id);

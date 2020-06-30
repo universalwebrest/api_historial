@@ -16,7 +16,14 @@ class Circulatorio_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->acv_ait = (bool)$row->acv_ait;
+            $row->aim = (bool)$row->aim;
+            $row->angioplastia_bypass  = (bool)$row->angioplastia_bypass;
+            $row->ecg = (bool)$row->ecg;
+            $row->ecodoppler = (bool)$row->ecodoppler;
+            return $row;
         }else{
             return NULL;
         }

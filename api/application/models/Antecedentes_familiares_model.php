@@ -15,8 +15,16 @@ class Antecedentes_familiares_model extends CI_Model
         
         $query = $this->db->get($this->mytable);
         
-        if (!is_null($query) && $query->num_rows()==1){            
-            return $query->row();
+        if (!is_null($query) && $query->num_rows()==1){
+            $row = $query->row();
+            $row->id = (int) $row->id;
+            $row->hta = (bool) $row->hta;
+            $row->iam = (bool) $row->iam;
+            $row->acv_ait = (bool) $row->acv_ait;
+            $row->dislipemia = (bool) $row->dislipemia;
+            $row->diabetes = (bool) $row->diabetes;
+            $row->enf_celiaca = (bool) $row->enf_celiaca;
+            return $row;
         }else{
             return NULL;
         }        

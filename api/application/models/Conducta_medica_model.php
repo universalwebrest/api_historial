@@ -16,7 +16,12 @@ class Conducta_medica_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()>=1){
-            return $query->result();
+            $conductas = $query->result();            
+            foreach ($conducta as $conductas) {
+                $conducta->id = (int)$conductas->id;
+                $conducta->id_historial = (int)$conducta->id_historial;                
+            }            
+            return $conductas;
         }else{
             return NULL;
         }
