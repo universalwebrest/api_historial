@@ -16,7 +16,11 @@ class Inmunizaciones_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->antigripal = (bool)$row->antigripal;
+            $row->antineumococo = (bool)$row->antineumococo;
+            return $row;
         }else{
             return NULL;
         }

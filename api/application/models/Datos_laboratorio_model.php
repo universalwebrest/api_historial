@@ -18,8 +18,8 @@ class Datos_laboratorio_model extends CI_Model
         if (!is_null($query) && $query->num_rows()==1){
             $row = $query->row();
             $row->id = (int)$row->id;
-            $row->glucemia = (int)$row->glucemia;
-            $row->hba1c = (float)$row->hba1c;
+            $row->glucemia = (float)$row->glucemia;
+            $row->hba1c = (int)$row->hba1c;
             $row->got = (int)$row->got;
             $row->gpt = (int)$row->gpt;
             $row->fal = (int)$row->fal;
@@ -30,6 +30,8 @@ class Datos_laboratorio_model extends CI_Model
             $row->clearence_creat = (int)$row->clearence_creat;
             $row->creatinina = (float)$row->creatinina;
             $row->estadio = (float)$row->estadio;
+            $row->prot = (float)$row->prot;
+            $row->creatininuria = (float)$row->creatininuria;
             return $row;
         }else{
             return NULL;

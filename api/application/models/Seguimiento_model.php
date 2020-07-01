@@ -15,8 +15,15 @@ class Seguimiento_model extends CI_Model
         
         $query = $this->db->get($this->mytable);
         
-        if (!is_null($query) && $query->num_rows()>0){
+        if (!is_null($query) && $query->num_rows()>0){            
             foreach ($query->result() as $seguimiento) {
+                $seguimiento->id = (int)$seguimiento->id;
+                $seguimiento->fecha = Util::convert_date_format($seguimiento->fecha);
+                $seguimiento->adherencia_al_tratamiento = (bool)$seguimiento->adherencia_al_tratamiento;
+                $seguimiento->ecg = (bool)$seguimiento->ecg;
+                $seguimiento->riesgo_cardiovascular = (int)$seguimiento->riesgo_cardiovascular;
+                $seguimiento->automonitoreo = (bool)$seguimiento->automonitoreo;
+                $seguimiento->id_historial = (int)$seguimiento->id_historial;
                 $seguimiento->datos_clinicos = $this->datos_clinicos_model->get($seguimiento->id);
                 $seguimiento->datos_laboratorio = $this->datos_laboratorio_model->get($seguimiento->id);
                 $seguimiento->medicamentos = $this->medicamentos_model->get($seguimiento->id);

@@ -16,7 +16,14 @@ class Renal_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->nefropatia = (bool)$row->nefropatia;
+            $row->nefropatia_tipo = (int)$row->nefropatia_tipo;
+            $row->dialisis = (bool)$row->dialisis;
+            $row->transplante = (bool)$row->transplante;
+            $row->ecografia = (bool)$row->ecografia;
+            return $row;
         }else{
             return NULL;
         }

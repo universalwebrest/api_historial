@@ -15,10 +15,8 @@ class Historial_controller extends REST_Controller
     /**
      * Constructor vacio de controlador de historiales 
      */
-    public function __construct(){
-        
-        parent::__construct();
-        
+    public function __construct(){        
+        parent::__construct();        
     }
         
     /**

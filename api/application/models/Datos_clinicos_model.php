@@ -18,7 +18,7 @@ class Datos_clinicos_model extends CI_Model
         if (!is_null($query) && $query->num_rows()==1){
             $row = $query->row();
             $row->id = (int)$row->id;
-            $row->tabaco = (float)$row->tabaco;
+            $row->tabaco = (bool)$row->tabaco;
             $row->peso = (float)$row->peso;
             $row->imc = (float)$row->imc;
             $row->tension_arterial = (int)$row->tension_arterial;

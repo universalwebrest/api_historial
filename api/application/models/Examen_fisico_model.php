@@ -16,7 +16,15 @@ class Examen_fisico_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->peso = (float)$row->peso;
+            $row->talla = (float)$row->talla;
+            $row->imc = (int)$row->imc;
+            $row->perimetro_cintura = (int)$row->perimetro_cintura;
+            $row->ta_sistolica = (int)$row->ta_sistolica;
+            $row->ta_diastolica = (int)$row->ta_diastolica;
+            return $row;
         }else{
             return NULL;
         }

@@ -16,7 +16,18 @@ class Oftalmologia_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->examen_actual = (bool)$row->examen_actual;
+            $row->fondo_de_ojos = (bool)$row->fondo_de_ojos;
+            $row->amaurosis = (bool)$row->amaurosis;
+            $row->cataratas = (bool)$row->cataratas;
+            $row->glaucoma = (bool)$row->glaucoma;
+            $row->maculopatia = (bool)$row->maculopatia;
+            $row->retinopatia = (bool)$row->retinopatia;
+            $row->proliferativa = (bool)$row->proliferativa;
+            $row->no_proliferativa = (bool)$row->no_proliferativa;
+            return $row;
         }else{
             return NULL;
         }

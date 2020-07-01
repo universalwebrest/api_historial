@@ -16,7 +16,11 @@ class Psicologia_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->realizo_entrevista = (bool)$row->realizo_entrevista;
+            $row->asiste_a_terapia = (bool)$row->asiste_a_terapia;
+            return $row;
         }else{
             return NULL;
         }

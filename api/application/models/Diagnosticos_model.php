@@ -17,7 +17,19 @@ class Diagnosticos_model extends CI_Model
         
         if ((!is_null($query)) && ($query->num_rows()==1))
         {
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->glucemia_alterada_en_ayunas = (bool)$row->glucemia_alterada_en_ayunas;
+            $row->tolerancia_glucosa_alterada = (bool)$row->tolerancia_glucosa_alterada;
+            $row->diabetes = (bool)$row->diabetes;
+            $row->diabetes_tiempo_evolucion = (int)$row->diabetes_tiempo_evolucion;
+            $row->diabetes_tipo = (int)$row->diabetes_tipo;
+            $row->diabetes_semanas_gestacion = (int)$row->diabetes_semanas_gestacion;
+            $row->hipertension_arterial = (bool)$row->hipertension_arterial;
+            $row->hipertension_arterial_tiempo_evolucion = (int)$row->hipertension_arterial_tiempo_evolucion;
+            $row->dislipemia = (bool)$row->dislipemia;
+            $row->preclasificacion_rcvg = (int)$row->preclasificacion_rcvg;
+            return $row;
         }
         else
         {

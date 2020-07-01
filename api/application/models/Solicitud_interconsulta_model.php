@@ -16,7 +16,16 @@ class Solicitud_interconsulta_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->cardiologia =(bool)$row->cardiologia;
+            $row->endocrinologia =(bool)$row->endocrinologia;
+            $row->nefrologia =(bool)$row->nefrologia;
+            $row->nutricion =(bool)$row->nutricion;
+            $row->odontologia =(bool)$row->odontologia;
+            $row->oftalmologia =(bool)$row->oftalmologia;
+            $row->psicologia =(bool)$row->psicologia;
+            return $row;
         }else{
             return NULL;
         }

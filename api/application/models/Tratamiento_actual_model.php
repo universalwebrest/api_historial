@@ -16,7 +16,21 @@ class Tratamiento_actual_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int) $row->id;
+            $row->insulina_nph = (int)$row->insulina_nph;
+            $row->insulina_rapida = (int)$row->insulina_rapida;
+            $row->metformina = (int)$row->metformina;
+            $row->glibenclamida = (int)$row->glibenclamida;
+            $row->enalapril = (int)$row->enalapril;
+            $row->atenolol = (int)$row->atenolol;
+            $row->furosemida = (int)$row->furosemida;
+            $row->hidroclorotiazida = (int)$row->hidroclorotiazida;
+            $row->aas = (int)$row->aas;
+            $row->simvastatina = (int)$row->simvastatina;
+            $row->fenofibrato = (int)$row->fenofibrato;
+            $row->automonitoreo = (int)$row->automonitoreo;
+            return $row;
         }else{
             return NULL;
         }

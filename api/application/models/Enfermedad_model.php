@@ -12,12 +12,19 @@ class Enfermedad_model extends CI_Model
         $query = $this->db->get('enfermedad');
         
         if (!is_null($query) && $query->num_rows() >0){
-            
-            foreach ($query->result() as $enfermedad) {
+            $enfermedades = $query->result();
+            foreach ($enfermedades as $enfermedad) {
+                $enfermedad->id = (int)$enfermedad->id;                
                 $enfermedad->tipos = $this->tipos_enfermedad_model->get($enfermedad->id);
+                if (!is_null($enfermedad->tipos)){
+                    foreach ($enfermedad->tipos as $tipo) {
+                        $tipo->id = (int)$tipo->id;
+                        $tipo->enfermedad_id = (int)$tipo->enfermedad_id;
+                    }
+                }
             }
             
-            return $query->result();
+            return $enfermedades;
             
         }else{
             return NULL;

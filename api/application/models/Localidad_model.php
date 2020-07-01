@@ -12,8 +12,12 @@ class Localidad_model extends CI_Model
         $localidades = $this->db->get('localidad');
 
         if ($localidades->num_rows() > 0) {
-            
-            return $localidades->result();
+            $localidades = $localidades->result();
+            foreach ($localidades as $localidad) {
+                $localidad->id = (int)$localidad->id;
+                $localidad->departamento_id = (int)$localidad->departamento_id;
+            }
+            return 
             
         } else {
             

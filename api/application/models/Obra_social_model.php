@@ -14,7 +14,11 @@ class Obra_social_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()>=1){
-            return $query->result();
+            $obra_sociales = $query->result();
+            foreach ($obra_sociales as $obra_social) {
+                $obra_social->id = (int)$obra_social->id;
+            }
+            return $obra_sociales;
         }else{
             return NULL;
         }

@@ -14,28 +14,47 @@ class Paciente_model extends CI_Model
     {           
         if (is_null($id))
         {
-            $pacientes = $this->db->get('paciente');
+            $query = $this->db->get('paciente');
             
-            if ($pacientes->num_rows() > 0)
+            if ($query->num_rows() > 0)
             {
-                return $pacientes->result();
+                $pacientes = $query->result();
+                foreach ($pacientes as $paciente) {
+                    $paciente->dni = (int)$paciente->dni;
+                    $paciente->fecha_nacimiento = Util::convert_date_format($paciente->fecha_nacimiento);
+                    $paciente->genero_id = (int)$paciente->genero_id;
+                    $paciente->estado_civil_id = (int)$paciente->estado_civil_id;
+                    $paciente->obra_social_id = (int)$paciente->obra_social_id;
+                    $paciente->estudio_id = (int)$paciente->estudio_id;
+                    $paciente->localidad_id = (int)$paciente->localidad_id;
+                    $paciente->departamento_id = (int)$paciente->departamento_id;
+                }
+                return $pacientes;
             }
             return null;
         }
         else
         {            
-            $paciente = $this->db->get_where('paciente', array('id'=>$id));
+            $query = $this->db->get_where('paciente', array('id'=>$id));
             
-            if ($paciente->num_rows() == 1)
-            {   
-                return $paciente->row();
+            if ($query->num_rows() == 1)
+            {
+                $paciente = $query->row();
+                $paciente->dni = (int)$paciente->dni;
+                $paciente->genero_id = (int)$paciente->genero_id;
+                $paciente->estado_civil_id = (int)$paciente->estado_civil_id;
+                $paciente->obra_social_id = (int)$paciente->obra_social_id;
+                $paciente->estudio_id = (int)$paciente->estudio_id;
+                $paciente->localidad_id = (int)$paciente->localidad_id;
+                $paciente->departamento_id = (int)$paciente->departamento_id;
+                return $paciente;
             }
             
             return null;
         }
         
     }
-    
+        
     public function save($paciente)
     {
         $this->db->set($this->_setPaciente($paciente));
@@ -91,7 +110,7 @@ class Paciente_model extends CI_Model
     
     private function _setPaciente($paciente)
     {
-        return array( 
+        return array(
             'dni' => $paciente['dni'],
             'nombre' => $paciente['nombre'],
             'fecha_nacimiento' => $paciente['fecha_nacimiento'],

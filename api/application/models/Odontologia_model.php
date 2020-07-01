@@ -16,8 +16,12 @@ class Odontologia_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1) {
-            
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->control_odontologico = (bool)$row->control_odontologico;
+            $row->enfermedad_periodontal = (bool)$row->enfermedad_periodontal;
+            $row->flemones = (bool)$row->flemones;
+            return $row;
         }
         else {
             

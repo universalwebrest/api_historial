@@ -16,7 +16,10 @@ class Historial_model extends CI_Model
         
         if ($historial->num_rows() == 1)
         {   
-            return $historial->row();
+            $row = $historial->row();
+            $row->id = (int)$row->id;
+            $row->hospital_id = (int)$row->hospital_id;
+            return $row;
         }
         else
         {

@@ -12,9 +12,11 @@ class Departamento_model extends CI_Model
         $query = $this->db->get('departamento');
 
         if ($query->num_rows() > 0) {
-                        
-            return $query->result();
-            
+            $departamentos = $query->result();
+            foreach ($departamentos as $departamento) {
+                $departamento->id = (int)$departamento->id;
+            }
+            return $departamentos;            
         } else {
             
             return null;

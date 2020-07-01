@@ -17,8 +17,9 @@ class Conducta_medica_model extends CI_Model
         
         if (!is_null($query) && $query->num_rows()>=1){
             $conductas = $query->result();            
-            foreach ($conducta as $conductas) {
-                $conducta->id = (int)$conductas->id;
+            foreach ($conductas as $conducta) {
+                $conducta->id = (int)$conducta->id;
+                $conducta->fecha = Util::convert_date_format($conducta->fecha);
                 $conducta->id_historial = (int)$conducta->id_historial;                
             }            
             return $conductas;

@@ -16,7 +16,14 @@ class Internaciones_relacionadas_con_enfermedad_de_base_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()>=1){
-            return $query->result();
+            $internaciones = $query->result();
+            foreach ($internaciones as $internacion) {
+                $internacion->id = (int)$internacion->id;
+                $internacion->fecha = Util::convert_date_format($internacion->fecha);
+                $internacion->dias = (int)$internacion->dias;
+                $internacion->id_historial = (int)$internacion->id_historial;
+            }
+            return $internaciones;
         }else{
             return NULL;
         }
@@ -90,5 +97,7 @@ class Internaciones_relacionadas_con_enfermedad_de_base_model extends CI_Model
             return null;
         }       
     }
+    
+    
 }
 

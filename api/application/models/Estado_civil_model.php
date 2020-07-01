@@ -14,8 +14,11 @@ class Estado_civil_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()>=1){
-            
-            return $query->result();
+            $estado_civiles = $query->result();
+            foreach ($estado_civiles as $estado_civil) {
+                $estado_civil->id = (int)$estado_civil->id;
+            }
+            return 
             
         }else{
             

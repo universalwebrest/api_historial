@@ -16,7 +16,11 @@ class Solicitud_practica_model extends CI_Model
         $query = $this->db->get($this->mytable);
         
         if (!is_null($query) && $query->num_rows()==1){
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->laboratorios = (bool)$row->laboratorios;
+            $row->otros_estudios = (bool)$row->otros_estudios;
+            return $row;
         }else{
             return NULL;
         }

@@ -18,7 +18,15 @@ class Enfermedades_asociadas_model extends CI_Model
         
         if (!is_null($query) && $query->num_rows()==1)
         {
-            return $query->row();
+            $row = $query->row();
+            $row->id = (int)$row->id;
+            $row->enfermedad_tiroidea = (bool)$row->enfermedad_tiroidea;
+            $row->enfermedad_tiroidea_tipo = (int)$row->enfermedad_tiroidea_tipo;
+            $row->tbc = (bool)$row->tbc;
+            $row->enfermedad_celiaca = (bool)$row->enfermedad_celiaca;
+            $row->enfermedad_reumatica = (bool)$row->enfermedad_reumatica;
+            $row->enfermedad_reumatica_tipo = (int)$row->enfermedad_reumatica_tipo;
+            return $row;
         }
         else
         {
