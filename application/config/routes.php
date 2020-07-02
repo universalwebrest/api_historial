@@ -56,6 +56,7 @@ $route['templates/(:any)'] = "templates/view/$1";
 
 $route['historial/(:num)']['get'] = 'historial_controller/index/$1';
 $route['historial']['post'] = 'historial_controller/create';
+$route['historial/(:num)']['post'] = 'historial_controller/update/$1';
 
 $route['pacientes']['get'] = 'paciente_controller/index';
 $route['pacientes/(:num)']['get'] = 'paciente_controller/find/$1';
@@ -88,7 +89,11 @@ $route['conducta_medica/(:num)']['post'] = 'conducta_medica_controller/update/$1
 $route['solicitud_interconsulta/(:num)']['post'] = 'solicitud_interconsulta_controller/update/$1';
 $route['inmunizaciones/(:num)']['post'] = 'inmunizaciones_controller/update/$1';
 $route['solicitud_practica/(:num)']['post'] = 'solicitud_practica_controller/update/$1';
+
 $route['seguimientos/(:num)']['post'] = 'seguimientos_controller/update/$1';
+$route['datos_clinicos/(:num)']['post'] = 'datos_clinicos_controller/update/$1';
+$route['datos_laboratorio/(:num)']['post'] = 'datos_laboratorio_controller/update/$1';
+$route['medicamentos/(:num)']['post'] = 'medicamentos_controller/update/$1';
 
 $route['internaciones_relacionadas_con_enfermedad_de_base/(:num)']['get'] =  'internaciones_relacionadas_con_enfermedad_de_base_controller/index/$1';
 $route['internaciones_relacionadas_con_enfermedad_de_base/(:num)']['post'] = 'internaciones_relacionadas_con_enfermedad_de_base_controller/update/$1';
