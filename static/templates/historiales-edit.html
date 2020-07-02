@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Alpha</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(0)" >Personal</button>
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(1)" >Diagnosticos</button>
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(2)" >Controles Clinicos</button>
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(3)" >Laboratorio</button>
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(4)" >Tratamiento</button>
+      <button type="button" class="btn btn-link" ng-click="vm.activeTemplate(5)" >Seguimiento</button>
+    </div>
+    <div class="form-inline">
+    	<div class="form-group mb-2">
+			<label for="txt_mensajes" class="sr-only">Mensajes</label>
+			<input type="text" readonly class="form-control-plaintext" id="txt_mensajes" value="{{vm.mensajes}}">
+		</div>		
+		<button type="button" class="btn btn-outline-primary" ng-click="vm.saveUpdatesRegistro()" 
+    		ng-disabled="vm.save_updates_disabled">Guardar</button>
+    	<button type="button" class="btn btn-outline-success" ng-click="vm.closeHistorial()" 
+    		ng-disabled="vm.close_disabled">Cerrar</button>
+    </div>
+  </div>
+</nav>
+
+<div class="slide-animate-container">
+	<div class="slide-animate" ng-include="vm.template"></div>
+</div>
