@@ -15,7 +15,7 @@ angular.module('historialApp').controller('listController', ['$http','$location'
 		};
 		
 		function getPacientes(){			
-			return $http({url:'/index.php/pacientes', method:'GET'}).then(
+			return $http({url: 'index.php/pacientes', method:'GET'}).then(
 				function(response){
 					return response.data.pacientes;
 				},

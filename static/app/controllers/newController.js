@@ -32,7 +32,7 @@ angular.module('historialApp').controller('newController', ['$http','$location',
 		
 		vm.save = function(){
 			var params = {};
-			params.url = '/index.php/historial';
+			params.url = 'index.php/historial';
 			params.method = 'POST';
 			params.params = {};
 			params.data = {
@@ -59,7 +59,7 @@ angular.module('historialApp').controller('newController', ['$http','$location',
 		
 		function getArrayObraSocial(){
 			var params = {};
-			params.url = '/index.php/obra_social';
+			params.url = 'index.php/obra_social';
 			params.method = 'GET';
 			
 			return $http(params).then(
@@ -74,7 +74,7 @@ angular.module('historialApp').controller('newController', ['$http','$location',
 		
 		function getArrayEstadoCivil(){
 			var params = {};
-			params.url = '/index.php/estado_civil';
+			params.url = 'index.php/estado_civil';
 			params.method = 'GET';
 			
 			return $http(params).then(
@@ -89,7 +89,7 @@ angular.module('historialApp').controller('newController', ['$http','$location',
 		
 		function getArrayDepartamento(){
 			var params = {};
-			params.url = '/index.php/departamento';
+			params.url = 'index.php/departamento';
 			params.method = 'GET';
 			
 			return $http(params).then(
@@ -111,7 +111,7 @@ angular.module('historialApp').controller('newController', ['$http','$location',
 		
 		function getArrayLocalidad(){
 			var params = {};
-			params.url = '/index.php/localidad';
+			params.url = 'index.php/localidad';
 			params.method = 'GET';
 			
 			return $http(params).then(

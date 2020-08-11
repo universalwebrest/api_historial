@@ -1,13 +1,13 @@
 angular.module('historialApp').controller('editController', [
 '$http','$scope','$timeout','$location','$routeParams', 
 function($http, $scope, $timeout, $location, $routeParams) {			
-	//0800-888-4747
+	
 	let id = $routeParams.id;	
 	let vm = this;
 	let array_updates = [];
 	let array_localidad = [];
 	let registro = {};
-	let urlBase = '/index.php/';
+	let urlBase = 'index.php/';
 		
 	vm.save_updates_disabled = true;
 	vm.localidad_disabled = true;
